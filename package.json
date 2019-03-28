@@ -1,7 +1,7 @@
 {
   "name": "gatsby-plugin-ffmpeg",
   "description": "Wrapper of the FFMPEG video manipulation library for Gatsby plugins",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "author": "Michael Orenstein <mike@whiteshadows.me>",
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
@@ -28,13 +28,13 @@
     "image"
   ],
   "license": "MIT",
-  "main": "index.js",
+  "main": "lib/index.js",
   "peerDependencies": {},
   "repository": "https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-plugin-ffmpeg",
   "scripts": {
-    "build": "babel src --out-dir .",
+    "build": "babel src --out-dir lib",
     "prepare": "cross-env NODE_ENV=production npm run build",
-    "watch": "babel -w src --out-dir .",
+    "watch": "babel -w src --out-dir lib",
     "postinstall": "npm run build"
   }
 }
