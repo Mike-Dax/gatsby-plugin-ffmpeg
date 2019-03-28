@@ -1,7 +1,7 @@
 {
   "name": "gatsby-plugin-ffmpeg",
   "description": "Wrapper of the FFMPEG video manipulation library for Gatsby plugins",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "author": "Michael Orenstein <mike@whiteshadows.me>",
   "bugs": {
     "url": "https://github.com/Mike-Dax/gatsby-plugin-ffmpeg/issues"
