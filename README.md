@@ -11,12 +11,17 @@ ffmpeg with the correct codecs is also required.
 
 ### MacOS
 
-The following will install ffmpeg with probably all the codecs you will need.
+With Homebrew 2.0.3/ffmpeg 4.1.1 ffmpeg options are no longer available on the default tap.
 
-`brew install ffmpeg --with-vpx --with-vorbis --with-libvorbis --with-vpx --with-vorbis --with-theora --with-libogg --with-libvorbis --with-gpl --with-version3 --with-nonfree --with-postproc --with-libaacplus --with-libass --with-libcelt --with-libfaac --with-libfdk-aac --with-libfreetype --with-libmp3lame --with-libopencore-amrnb --with-libopencore-amrwb --with-libopenjpeg --with-openssl --with-libopus --with-libschroedinger --with-libspeex --with-libtheora --with-libvo-aacenc --with-libvorbis --with-libvpx --with-libx264 --with-libxvid`
+From https://trac.ffmpeg.org/wiki/CompilationGuide/macOS
 
-You may already have ffmpeg installed via brew, in which case you should use the
-`upgrade` command instead.
+The following will install ffmpeg.
+
+```
+brew tap varenc/ffmpeg
+brew tap-pin varenc/ffmpeg
+brew install ffmpeg $(brew options ffmpeg --compact)
+```
 
 ## How to use
 
