@@ -3,8 +3,6 @@
 This is a relatively low level helper plugin for video transcoding with ffmpeg.
 You generally shouldn't need to use this.
 
-NOTE: This isn't actually published yet.
-
 ## Install
 
 `npm install --save gatsby-plugin-ffmpeg`
@@ -24,5 +22,5 @@ You may already have ffmpeg installed via brew, in which case you should use the
 
 ```javascript
 // In your gatsby-config.js
-plugins: [`gatsby-plugin-ffmpeg`]
+plugins: [`gatsby-plugin-ffmpeg`];
 ```
