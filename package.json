@@ -1,24 +1,24 @@
 {
   "name": "gatsby-plugin-ffmpeg",
   "description": "Wrapper of the FFMPEG video manipulation library for Gatsby plugins",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "author": "Michael Orenstein <mike@whiteshadows.me>",
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   },
   "dependencies": {
-    "@babel/runtime": "7.0.0-beta.51",
-    "async": "^2.1.2",
+    "@babel/runtime": "^7.4.2",
+    "async": "^2.6.2",
     "bluebird": "^3.5.0",
-    "fs-exists-cached": "^1.0.0",
-    "lodash": "^4.17.4",
-    "progress": "^1.1.8",
     "fluent-ffmpeg": "^2.1.2",
-    "gatsby": ">2.0.0-alpha"
+    "fs-exists-cached": "^1.0.0",
+    "gatsby": ">2.0.0",
+    "lodash": "^4.17.4",
+    "progress": "^1.1.8"
   },
   "devDependencies": {
-    "@babel/cli": "7.0.0-beta.51",
-    "@babel/core": "7.0.0-beta.51",
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.3",
     "cross-env": "^5.1.4"
   },
   "homepage": "https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-plugin-ffmpeg#readme",
@@ -32,10 +32,9 @@
   "peerDependencies": {},
   "repository": "https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-plugin-ffmpeg",
   "scripts": {
-    "build": "babel src --out-dir . --ignore **/__tests__",
+    "build": "babel src --out-dir .",
     "prepare": "cross-env NODE_ENV=production npm run build",
-    "watch": "babel -w src --out-dir . --ignore **/__tests__",
+    "watch": "babel -w src --out-dir .",
     "postinstall": "npm run build"
-  },
-  "gitHead": "788133e56dd005663f353fff90ffa37ce2fd87b9"
+  }
 }
