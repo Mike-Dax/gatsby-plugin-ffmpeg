@@ -1,7 +1,6 @@
 const crypto = require(`crypto`)
 const _ = require(`lodash`)
 const Promise = require(`bluebird`)
-const fs = require(`fs`)
 const ProgressBar = require(`progress`)
 const queue = require(`async/queue`)
 const path = require(`path`)
@@ -18,7 +17,7 @@ const bar = new ProgressBar(
   {
     total: 0,
     width: 30,
-  },
+  }
 )
 
 const reportError = (message, err, reporter) => {
@@ -120,7 +119,7 @@ const processFile = async (file, jobs, cb, reporter) => {
           id: `processing video ${job.file.absolutePath}`,
           videosFinished,
         },
-        { name: `gatsby-plugin-ffmpeg` },
+        { name: `gatsby-plugin-ffmpeg` }
       )
 
       if (err) {
@@ -182,7 +181,7 @@ const queueJob = (job, reporter) => {
           id: `processing video ${job.file.absolutePath}`,
           videosCount: _.values(toProcess[inputFileKey]).length,
         },
-        { name: `gatsby-plugin-ffmpeg` },
+        { name: `gatsby-plugin-ffmpeg` }
       )
       // We're now processing the file's jobs.
       processFile(
@@ -193,11 +192,11 @@ const queueJob = (job, reporter) => {
             {
               id: `processing video ${job.file.absolutePath}`,
             },
-            { name: `gatsby-plugin-ffmpeg` },
+            { name: `gatsby-plugin-ffmpeg` }
           )
           cb()
         },
-        reporter,
+        reporter
       )
     })
   }
@@ -212,8 +211,8 @@ async function queueVideoTranscode({ file, options = {}, reporter }) {
       JSON.stringify(
         Object.assign({}, options, {
           transcode: options.transcode.toString(), // reflection!
-        }),
-      ),
+        })
+      )
     )
     .digest(`hex`)
 
@@ -283,7 +282,7 @@ async function transcode({ file, options = {}, reporter }) {
     reportError(
       `FFMPEG Options has no pipelines`,
       new Error('gatsby-plugin-ffmpeg has no pipelines!'),
-      reporter,
+      reporter
     )
     return
   }
@@ -294,8 +293,8 @@ async function transcode({ file, options = {}, reporter }) {
         file,
         options: pipeline,
         reporter,
-      }),
-    ),
+      })
+    )
   )
 
   const originalName = file.base
