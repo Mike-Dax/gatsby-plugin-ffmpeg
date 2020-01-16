@@ -34,14 +34,14 @@ const reportError = (message, err, reporter) => {
 
 function notMemoizedGetVideoDimensions(path) {
   return ffmpeg.ffprobeAsync(path).then(metadata => {
-    // just pick the first stream
+    // just pick the first video stream
 
     if (!metadata[0].streams) {
       console.warn(path, 'has no video streams?')
       return null
     }
 
-    const stream = metadata[0].streams[0]
+    const stream = metadata[0].streams.filter(s => s.codec_type === 'video')[0]
 
     return {
       width: stream.width,
