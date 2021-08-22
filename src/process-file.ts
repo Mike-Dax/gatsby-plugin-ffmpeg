@@ -132,12 +132,13 @@ const ffprobeAsync = promisify(ffmpeg.ffprobe)
 async function getVideoStreamInfo(filePath: string) {
   const metadata = (await ffprobeAsync(filePath)) as FfprobeData
 
-  // just pick the first stream
-  if (metadata.streams.length === 0) {
+  const stream = metadata.streams.find(
+    (stream) => stream.codec_type === `video`
+  )
+
+  if (stream === undefined) {
     throw new Error(`Video file has no video streams: ${filePath}`)
   }
-
-  const stream = metadata.streams[0]
 
   return stream
 }
