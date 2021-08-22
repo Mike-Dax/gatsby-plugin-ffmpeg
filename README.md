@@ -1,9 +1,10 @@
 # gatsby-plugin-ffmpeg
 
-This is a relatively low level helper plugin for video transcoding with ffmpeg.
-You generally shouldn't need to use this.
+This is a low level helper plugin for video transcoding with ffmpeg.
 
-You're most likely looking for [gatsby-remark-videos](https://github.com/Mike-Dax/gatsby-remark-videos) if you want to automatically convert videos in your markdown, or [gatsby-transformer-ffmpeg](https://github.com/Mike-Dax/gatsby-transformer-ffmpeg) if you're looking to use these videos elsewhere in your website
+You generally shouldn't need to use this. You're most likely looking for [gatsby-remark-videos](https://github.com/Mike-Dax/gatsby-remark-videos) if you want to automatically convert videos in your markdown, or [gatsby-transformer-ffmpeg](https://github.com/Mike-Dax/gatsby-transformer-ffmpeg) if you're looking to use these videos elsewhere in your website
+
+Works with Gatsby v3.
 
 ## Install
 
@@ -21,6 +22,5 @@ The following will install ffmpeg.
 
 ```
 brew tap varenc/ffmpeg
-brew tap-pin varenc/ffmpeg
 brew install ffmpeg $(brew options ffmpeg --compact)
 ```
