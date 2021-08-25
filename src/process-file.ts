@@ -66,19 +66,31 @@ export async function processFile(args: WorkerPassedArgs) {
   const stream = await getVideoStreamInfo(args.inputPaths[0].path)
   const aspectRatio = (stream.width ?? 1) / (stream.height ?? 1)
 
-  let width: number
-  let height: number
+  let width = options.maxWidth
+  let height = options.maxHeight
 
-  if (aspectRatio < 1) {
-    width = options.maxWidth
-    height = Math.round(width / aspectRatio)
+  if (stream.width !== undefined && stream.height !== undefined) {
+    if (aspectRatio < 1) {
+      width = options.maxWidth
+      height = Math.round(width / aspectRatio)
+    } else {
+      height = options.maxHeight
+      width = Math.round(height * aspectRatio)
+    }
   } else {
-    height = options.maxHeight
-    width = Math.round(height * aspectRatio)
+    reporter.warn(
+      `Could not read stream resolution, was ${stream.width} x ${stream.height}, rendering at ${width}x${height}`
+    )
   }
 
   // Resize
   pipeline = pipeline.size(`${width}x${height}`)
+
+  const ffmpegArgs = (pipeline as any)._getArguments()
+
+  if (process.env.DEBUG_FFMPEG) {
+    reporter.info(`ffmpeg is being executed with args: ${ffmpegArgs.join(` `)}`)
+  }
 
   const deferred = new Deferred()
 
@@ -98,7 +110,12 @@ export async function processFile(args: WorkerPassedArgs) {
   // Attach handlers to our pipeline
   pipeline
     .on('end', deferred.resolve)
-    .on('error', deferred.reject)
+    .on('error', (err) => {
+      reporter.warn(
+        `During error, ran ffmpeg with arguments: ${ffmpegArgs.join(` `)}`
+      )
+      deferred.reject(err)
+    })
     .on('progress', function (info: { percent: number }) {
       const currentFrameCount = Math.floor((info.percent / 100) * frames)
       const diff = currentFrameCount - reportedFrameCount
