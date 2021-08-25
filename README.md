@@ -24,3 +24,12 @@ The following will install ffmpeg.
 brew tap varenc/ffmpeg
 brew install ffmpeg $(brew options ffmpeg --compact)
 ```
+
+## Debugging
+
+Running with the environment variable `DEBUG_FFMPEG=true` will print the ffmpeg arguments used.
+
+```
+info ffmpeg is being executed with args: -i ~/markdown-pages/video.mp4 -y -an -vcodec libx264 -b:v 100k -filter:v
+scale=w=1206:h=480 -profile:v main -pix_fmt yuv420p -movflags faststart
+```
