@@ -28,6 +28,9 @@
   "types": "./lib/index.d.ts",
   "repository": "https://github.com/Mike-Dax/gatsby-plugin-ffmpeg",
   "scripts": {
-    "build": "tsc --project tsconfig.json"
+    "build": "tsc",
+    "prepare": "yarn run build",
+    "watch": "tsc --watch",
+    "prepublish": "yarn run build"
   }
 }
