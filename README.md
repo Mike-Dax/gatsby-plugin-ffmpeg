@@ -33,3 +33,18 @@ Running with the environment variable `DEBUG_FFMPEG=true` will print the ffmpeg 
 info ffmpeg is being executed with args: -i ~/markdown-pages/video.mp4 -y -an -vcodec libx264 -b:v 100k -filter:v
 scale=w=1206:h=480 -profile:v main -pix_fmt yuv420p -movflags faststart
 ```
+
+## Funding
+
+<p align="center">
+<a href="https://electricui.com/">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://electricui.com/web_static/monochrome-logotype.svg">
+  <img alt="Electric UI" src="https://electricui.com/web_static/logotype.svg" width="500">
+</picture>
+</a>
+</p>
+
+---
+
+Work on `gatsby-plugin-ffmpeg` is funded by [Electric UI](https://electricui.com). If you need to design an [Arduino GUI](https://electricui.com/hello/arduino), want [visualisations for a complex robotics system](https://electricui.com/features) or generally need a [user interface for your hardware project](https://electricui.com/features), please take a look at the website.
